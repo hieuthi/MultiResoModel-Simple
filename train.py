@@ -222,7 +222,7 @@ if __name__ == '__main__':
     print('Device: {}'.format(device))
 
     modules = {}
-    modules["model"]     = MultiResoModel( num_scales = len(config["units"]), include_utt=config["include_utt"], flag_pool=config["flag_pool"], use_mask=config["use_mask"],
+    modules["model"]     = MultiResoModel( num_scales = len(config["units"]), include_utt=config["include_utt"], use_mask=config["use_mask"],
                                             ssl_path = config["ssl_path"], ssl_dim = config["ssl_dim"], ssl_tuning=config["ssl_tuning"], device=device ).to(device)
     modules["optimizer"] = torch.optim.Adam( modules["model"].parameters(), 
                                              lr=config["optimizer"]["learning_rate"] )
@@ -262,7 +262,7 @@ if __name__ == '__main__':
         if os.path.exists(eval_outpath):
             shutil.rmtree(eval_outpath)
         os.makedirs(eval_outpath, exist_ok=True)
-        produce_evaluation(args.eval_scp, model, eval_outpath, batch_size=args.batch_size, device=device)
+        produce_evaluation(args.eval_scp, model, eval_outpath, batch_size=args.batch_size, units=config["units"], device=device)
         sys.exit(0)
     # ====================#
     #   Evaluation END    #
