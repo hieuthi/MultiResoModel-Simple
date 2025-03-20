@@ -26,15 +26,24 @@ fi
 
 echo "$0: extract data to PartialSpoof"
 mkdir -p PartialSpoof/wav
-tar -xvf downloads/database_eval.tar.gz && mv downloads/database/eval/con_wav PartialSpoof/wav/eval
-tar -xvf downloads/database_train.tar.gz && mv downloads/database/train/con_wav PartialSpoof/wav/train
-tar -xvf downloads/database_dev.tar.gz && mv downloads/database/dev/con_wav PartialSpoof/wav/dev
+
+if [ ! -d PartialSpoof/wav/eval ]; then
+  tar -xvf downloads/database_eval.tar.gz && mv downloads/database/eval/con_wav PartialSpoof/wav/eval
+fi
+
+if [ ! -d PartialSpoof/wav/train ]; then
+  tar -xvf downloads/database_train.tar.gz && mv downloads/database/train/con_wav PartialSpoof/wav/train
+fi
+
+if [ ! -d PartialSpoof/wav/dev ]; then
+  tar -xvf downloads/database_dev.tar.gz && mv downloads/database/dev/con_wav PartialSpoof/wav/dev
+fi
 
 wget https://github.com/hieuthi/MultiResoModel-Simple/releases/download/v0.1.0/label_PartialSpoof_dev.txt -P PartialSpoof
 wget https://github.com/hieuthi/MultiResoModel-Simple/releases/download/v0.1.0/label_PartialSpoof_train.txt -P PartialSpoof
 wget https://github.com/hieuthi/MultiResoModel-Simple/releases/download/v0.1.0/label_PartialSpoof_eval.txt -P PartialSpoof
 
 mkdir -p PartialSpoof/scp
-find PartialSpoof/wav/train -name "*.wav" | sort > scp/wav-train.scp
-find PartialSpoof/wav/dev -name "*.wav" | sort > scp/wav-dev.scp
-find PartialSpoof/wav/eval -name "*.wav" | sort > scp/wav-eval.scp
+find PartialSpoof/wav/train -name "*.wav" | sort > PartialSpoof/scp/wav-train.scp
+find PartialSpoof/wav/dev -name "*.wav" | sort > PartialSpoof/scp/wav-dev.scp
+find PartialSpoof/wav/eval -name "*.wav" | sort > PartialSpoof/scp/wav-eval.scp
