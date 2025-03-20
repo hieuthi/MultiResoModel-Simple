@@ -16,7 +16,7 @@ python -u train.py --config configs/baseline.toml --batch_size 8 --num_workers 6
 ### Evaluating
 - Evaluating looks something like this
 ```bash
-python -u train.py --config configs/baseline.toml --batch_size 4 --is_eval --eval_scp PartialSpoof/scp/eval-wav.scp --resume_ckpt exp/baseline/9.pth --eval_tag "_partialspoof-eval" 2>&1 &
+python -u train.py --config configs/baseline.toml --batch_size 4 --is_eval --eval_scp PartialSpoof/scp/wav-eval.scp --resume_ckpt exp/baseline/9.pth --eval_tag "_partialspoof-eval" 2>&1 &
 ```
 - You need to choose a checkpoint by yourself. The script will produce multiple text files that store the results in multiple resolutions at `exp/baseline/result_baseline_e9_partialspoof-eval`
 
