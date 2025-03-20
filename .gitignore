@@ -1,3 +1,5 @@
-pretrained/*
+pretrained/
 exp/*
 __pycache__
+downloads/
+PartialSpoof/
