@@ -14,9 +14,9 @@ ssl_tuning = true
 
 [dataset]
 scp_train_wav = "PartialSpoof/scp/train-wav.scp"
-scp_train_lab = "PartialSpoof/scp/train-lab.scp"
+scp_train_lab = "PartialSpoof/label_PartialSpoof_train.txt"
 scp_dev_wav = "PartialSpoof/scp/dev-wav.scp"
-scp_dev_lab = "PartialSpoof/scp/dev-lab.scp"
+scp_dev_lab = "PartialSpoof/label_PartialSpoof_dev.txt"
 
 [optimizer]
 learning_rate = 0.00001
