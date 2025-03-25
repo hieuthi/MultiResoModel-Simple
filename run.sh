@@ -33,6 +33,10 @@ if [ ! -f PartialSpoof/scp/wav-train.scp ]; then find PartialSpoof/wav/train -na
 if [ ! -f PartialSpoof/scp/wav-dev.scp ]; then find PartialSpoof/wav/dev -name "*.wav" | sort > PartialSpoof/scp/wav-dev.scp; fi
 if [ ! -f PartialSpoof/scp/wav-eval.scp ]; then find PartialSpoof/wav/eval -name "*.wav" | sort > PartialSpoof/scp/wav-eval.scp; fi
 
+echo "$0: download Wav2Vec2 pretrained model"
+if [ ! -f pretrained/w2v_large_lv_fsh_swbd_cv.pt ]; then wget --show-progress https://dl.fbaipublicfiles.com/fairseq/wav2vec/w2v_large_lv_fsh_swbd_cv.pt -P pretrained; fi
+if [ ! -f pretrained/w2v_large_lv_fsh_swbd_cv_fixed.pt ]; then python fix_ssl.py; fi
+
 
 ## Training detection model with PartialSpoof
 echo "$0: train the multiresomodel with PartialSpoof"
