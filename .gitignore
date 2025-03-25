@@ -2,3 +2,6 @@ exp/*
 __pycache__
 downloads/
 PartialSpoof/
+logs/*.log
+pretrained/*.pt
+

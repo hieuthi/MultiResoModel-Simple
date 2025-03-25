@@ -29,15 +29,13 @@ if [ ! -d $normdir ]; then
     else
       cp $line $normdir
     fi
-  done < <( find $datadir -name "*.wav" )
+  done < <( find ${datadir}/ -name "*.wav" )
 fi
 
 # Prepare script file
-outdir=exp/$model/result_${baseline}_e${epoch}_${tag}
-mkdir $outdir
-find $normdir -name "*.wav" > ${outdir}/wav.scp
+outdir=exp/$model/result_${model}_e${epoch}_${tag}
+mkdir -p $outdir
+find $normdir/ -name "*.wav" > exp/$model/${tag}_lt${MAXDUR}.scp
 
 # Inference
-python -u train.py --config configs/${model}.toml --batch_size 4 \ 
-  --is_eval --eval_scp ${outdir}/wav.scp \ 
-  --resume_ckpt ${checkpoint} --eval_tag "_${tag}" 2>&1 &
+python -u train.py --config configs/${model}.toml --batch_size 4 --is_eval --eval_scp exp/$model/${tag}_lt${MAXDUR}.scp --resume_ckpt ${checkpoint} --eval_tag "_${tag}"
