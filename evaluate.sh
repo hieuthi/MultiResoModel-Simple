@@ -39,3 +39,15 @@ find $normdir/ -name "*.wav" > exp/$model/${tag}_lt${MAXDUR}.scp
 
 # Inference
 python -u train.py --config configs/${model}.toml --batch_size 4 --is_eval --eval_scp exp/$model/${tag}_lt${MAXDUR}.scp --resume_ckpt ${checkpoint} --eval_tag "_${tag}"
+
+# Normalize score files
+mkdir $outdir/sort
+echo "Normalize utterance scores"
+sort $outdir/utt.score > $outdir/sort/utt.score
+python normalize_score.py --utt $outdir/sort/utt.score $outdir/utt.score
+
+for unit in 0.02 0.04 0.08 0.16 0.32 0.64; do
+  sort $outdir/unit${unit}.score > $outdir/sort/unit${unit}.score
+  python normalize_score.py $outdir/sort/unit${unit}.score $outdir/unit${unit}.score
+done
+
