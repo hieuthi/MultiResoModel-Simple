@@ -1,30 +1,41 @@
 # MultiResoModel (Simple)
 
-This repository is an unofficial reimplementation of the [Partial Spoof Detection MultiResoModel](https://ieeexplore.ieee.org/document/10003971) to conduct experiments with the LlamaPartialSpoof Dataset. It was completely rewritten to include only the most essential parts of the model and to make reproduction and improvement simple.
+This repository is an unofficial reimplementation of the [Partial Spoof Detection MultiResoModel](https://ieeexplore.ieee.org/document/10003971) that was used in the paper [LlamaPartialSpoof](https://arxiv.org/abs/2409.14743). It was completely rewritten to include only the most essential parts and to make reproduction and improvement simple.
 
-This repository is still underdevelopment. More information will be added soon.
+## Notice
+This model configuration is not an exactly replicate of [the original MultiResoModel](https://github.com/nii-yamagishilab/PartialSpoof/tree/main/03multireso) hence the slight different result. Some of the major difference are.
+- This model was trained on fixed-length segments by clipping or padding instead of entire utterance like the original to make it's easier to adapt to different dataset.
+- Model is trained on a random segment of utterance instead of from the start
 
 ## How to Use
 ### Training
-- Training looks something like this
-```bash
-python -u train.py --config configs/baseline.toml --batch_size 8 --num_workers 6 > logs/baseline.log 2>&1 &
+- For a start to finish training please execute
 ```
-- The information about the training and developing data is specifed in the config files, so you need to edit it to your local environment.
-- The `scp_train_wav` config is the text file with a list of audio file. The `scp_train_lab` config is a specific label format for partial spoof dataset. It is the same format as [LlamaPartialSpoof Dataset](https://zenodo.org/records/14214149). I will upload a pre-formatted labels for third party datasets in the future. The `scp_train_wav` and the `scp_train_lab` must have the same order.
-
-### Evaluating
-- Evaluating looks something like this
-```bash
-python -u train.py --config configs/baseline.toml --batch_size 4 --is_eval --eval_scp PartialSpoof/scp/wav-eval.scp --resume_ckpt exp/baseline/9.pth --eval_tag "_partialspoof-eval" 2>&1 &
+./run.sh
 ```
-- You need to choose a checkpoint by yourself. The script will produce multiple text files that store the results in multiple resolutions at `exp/baseline/result_baseline_e9_partialspoof-eval`
+- To customize the training process, please edit the config file. For examples: changing the training and validation dataset. I used a custom label format for partial spoof dataset.
 
+### Inference
+- For inference, you need a checkpoint either from the training or download our [checkpoints](#Checkpoint)
+```bash
+./evaluate.sh baseline 55 PartialSpoof/wav/eval ps-eval
+```
+- Since the model was trained on fixed-segment, the inference will first split the evaluation data into multiple fixed-length segments before running the inference then combined the results.
+
+### Evaluation
+Coming soon
+
+## Checkpoints
+- You can download checkpoints from [huggingface](https://huggingface.co/hieuthi/MultiResoModel-Simple-ckpts). Note that the checkpoints on huggingface are different runs from the original LlamaPartialSpoof paper hence the slightly different results.
+- Utterance-based Equal Error Rate (EER)
+
+|           Model | ps-eval |
+|-----------------|---------|
+| baseline-ps-e55 |   1.47% |
 
 ## Citations
-If you use this source code for your research please cite both the original paper and the paper introduce this version
-
-- LlamaPartialSpoof Dataset
+If using this source code please cite both the paper introduced this reimplementation and the original paper
+- LlamaPartialSpoof
 ```
 @inproceedings{luong2025llamapartialspoof,
   title={LlamaPartialSpoof: An LLM-Driven Fake Speech Dataset Simulating Disinformation Generation},
