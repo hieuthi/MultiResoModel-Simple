@@ -11,19 +11,21 @@ This model configuration is not an exactly replicate of [the original MultiResoM
 ### Training
 - For a start to finish training please execute
 ```
-./run.sh
+./train_baseline.sh
 ```
 - To customize the training process, please edit the config file. For examples: changing the training and validation dataset. I used a custom label format for partial spoof dataset.
 
 ### Inference
 - For inference, you need a checkpoint either from the training or download our [checkpoints](#Checkpoint)
 ```bash
-./evaluate.sh baseline 55 PartialSpoof/wav/eval ps-eval
+./inference.sh baseline 55 PartialSpoof/wav/eval ps-eval
 ```
 - Since the model was trained on fixed-segment, the inference will first split the evaluation data into multiple fixed-length segments before running the inference then combined the results.
 
 ### Evaluation
-Coming soon
+```
+./evaluate.sh baseline 55 ps-eval
+```
 
 ## Checkpoints
 - You can download checkpoints from [huggingface](https://huggingface.co/hieuthi/MultiResoModel-Simple-ckpts). Note that the checkpoints on huggingface are different runs from the original LlamaPartialSpoof paper hence the slightly different results.
@@ -31,7 +33,12 @@ Coming soon
 
 |           Model | ps-eval |
 |-----------------|---------|
-| baseline-ps-e55 |   1.47% |
+| baseline-ps-e55 |   1.48% |
+
+- 20-ms frame-based EER
+|           Model | ps-eval |
+|-----------------|---------|
+| baseline-ps-e55 |  13.67% |
 
 ## Citations
 If using this source code please cite both the paper introduced this reimplementation and the original paper
