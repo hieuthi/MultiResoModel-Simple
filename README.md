@@ -36,6 +36,7 @@ This model configuration is not an exactly replicate of [the original MultiResoM
 | baseline-ps-e55 |   1.48% |
 
 - 20-ms frame-based EER
+
 |           Model | ps-eval |
 |-----------------|---------|
 | baseline-ps-e55 |  13.67% |

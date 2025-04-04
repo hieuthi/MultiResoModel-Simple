@@ -9,7 +9,7 @@ tag=$3
 resultdir="result_${model}_e${epoch}_${tag}"
 labelfile=PartialSpoof/label_PartialSpoof_eval.txt
 
-mkdir -p results/${resultdir}
+mkdir -p results/${resultdir}_{utt,unit0.02}
 
 echo "Calculate utterance-based EER"
 python partialspoof-metrics/calculate_eer.py --labpath ${labelfile} \

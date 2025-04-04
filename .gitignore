@@ -4,4 +4,5 @@ downloads/
 PartialSpoof/
 logs/*.log
 pretrained/*.pt
+results/*
 
