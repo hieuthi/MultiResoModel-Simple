@@ -3,11 +3,11 @@
 
 model=$1
 epoch=$2
-tag=$3
+labelfile=$3
+tag=$4
 
 
 resultdir="result_${model}_e${epoch}_${tag}"
-labelfile=PartialSpoof/label_PartialSpoof_eval.txt
 
 mkdir -p results/${resultdir}_{utt,unit0.02}
 

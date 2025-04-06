@@ -24,25 +24,26 @@ This model configuration is not an exactly replicate of [the original MultiResoM
 
 ### Evaluation
 ```
-./evaluate.sh baseline 55 ps-eval
+./evaluate.sh baseline 55 PartialSpoof/label_PartialSpoof_eval.txt ps-eval
 ```
 
 ## Checkpoints
 - You can download checkpoints from [huggingface](https://huggingface.co/hieuthi/MultiResoModel-Simple-ckpts). Note that the checkpoints on huggingface are different runs from the original LlamaPartialSpoof paper hence the slightly different results.
+
 - Utterance-based Equal Error Rate (EER)
 
-|           Model | ps-eval |
-|-----------------|---------|
-| baseline-ps-e55 |   1.48% |
+|           Model | ps-eval | LlamaPartialSpoof |
+|-----------------|--------:|------------------:|
+| baseline-ps-e55 |   1.48% |            24.51% |
 
 - 20-ms frame-based EER
 
-|           Model | ps-eval |
-|-----------------|---------|
-| baseline-ps-e55 |  13.67% |
+|           Model | ps-eval | LlamaPartialSpoof |
+|-----------------|---------|------------------:|
+| baseline-ps-e55 |  13.67% |           46.30%  | 
 
 ## Citations
-If using this source code please cite both the paper introduced this reimplementation and the original paper
+If using this source code please cite both the LlamaPartialSpoof paper which introduced this reimplementation and the original MultiResoModel paper
 - LlamaPartialSpoof
 ```
 @inproceedings{luong2025llamapartialspoof,
