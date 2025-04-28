@@ -3,17 +3,17 @@
 This repository is an unofficial reimplementation of the [Partial Spoof Detection MultiResoModel](https://ieeexplore.ieee.org/document/10003971) that was used in the paper [LlamaPartialSpoof](https://arxiv.org/abs/2409.14743). It was completely rewritten to include only the most essential parts and to make reproduction and improvement simple.
 
 ## Notice
-This model configuration is not an exactly replicate of [the original MultiResoModel](https://github.com/nii-yamagishilab/PartialSpoof/tree/main/03multireso) hence the slight different result. Some of the major difference are.
-- This model was trained on fixed-length segments by clipping or padding instead of entire utterance like the original to make it's easier to adapt to different dataset.
+This is not an exact replication of [the original MultiResoModel](https://github.com/nii-yamagishilab/PartialSpoof/tree/main/03multireso) hence the slight different result. Some of the major differences are:
+- This model was trained on fixed-length segments instead of entire utterance to easier adapted to different dataset.
 - Model is trained on a random segment of utterance instead of from the start
 
 ## How to Use
 ### Training
-- For a start to finish training please execute
+- For a start to finish training execute
 ```
 ./train_baseline.sh
 ```
-- To customize the training process, please edit the config file. For examples: changing the training and validation dataset. I used a custom label format for partial spoof dataset.
+- To customize the training process you need to edit the config file. For examples: changing the training and validation dataset. I used a custom label format for partial spoof dataset.
 
 ### Inference
 - For inference, you need a checkpoint either from the training or download our [checkpoints](#Checkpoint)
