@@ -27,6 +27,20 @@ This is not an exact replication of [the original MultiResoModel](https://github
 ./evaluate.sh baseline 55 PartialSpoof/label_PartialSpoof_eval.txt ps-eval
 ```
 
+### Evaluating on LlamaPartialSpoof
+- LlamaPartialSpoof was prepared as an out-of-domain evaluation dataset. Similar to in-domain evaluation you can get the result by running the following commands
+```
+# Download LlamaPartialSpoof
+./download_lps.sh
+
+# Inference
+./inference.sh baseline 55 LlamaPartialSpoof/R01TTS.0.a lps0a
+
+# Evaluation
+./evaluate.sh baseline 55 LlamaPartialSpoof/label_R01TTS.0.a.txt lps0a
+
+```
+
 ## Checkpoints
 - You can download checkpoints from [huggingface](https://huggingface.co/hieuthi/MultiResoModel-Simple-ckpts). Note that the checkpoints on huggingface are different runs from the original LlamaPartialSpoof paper hence the slightly different results.
 
