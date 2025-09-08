@@ -40,6 +40,13 @@ This is not an exact replication of [the original MultiResoModel](https://github
 ./evaluate.sh baseline 55 LlamaPartialSpoof/label_R01TTS.0.a.txt lps0a
 
 ```
+- The evaluation script calculates base on the utterances included in the label file. You can get full fakes and partial fakes only results using the follow scripts
+```
+./evaluate.sh baseline 55 LlamaPartialSpoof/extras/label_bonafide_full lps0a "_full"
+./evaluate.sh baseline 55 LlamaPartialSpoof/extras/label_bonafide_partial lps0a "_partial"
+
+```
+
 
 ## Checkpoints
 - You can download checkpoints from [huggingface](https://huggingface.co/hieuthi/MultiResoModel-Simple-ckpts). Note that the checkpoints on huggingface are different runs from the original LlamaPartialSpoof paper hence the slightly different results.
