@@ -42,8 +42,8 @@ This is not an exact replication of [the original MultiResoModel](https://github
 ```
 - The evaluation script calculates base on the utterances included in the label file. You can get full fakes and partial fakes only results using the follow scripts
 ```
-./evaluate.sh baseline 55 LlamaPartialSpoof/extras/label_bonafide_full lps0a "_full"
-./evaluate.sh baseline 55 LlamaPartialSpoof/extras/label_bonafide_partial lps0a "_partial"
+./evaluate.sh baseline 55 LlamaPartialSpoof/extras/label_bonafide_full.txt lps0a "_full"
+./evaluate.sh baseline 55 LlamaPartialSpoof/extras/label_bonafide_partial.txt lps0a "_partial"
 
 ```
 
