@@ -66,9 +66,9 @@ This is not an exact replication of [the original MultiResoModel](https://github
 
 - 20-ms frame-based EER
 
-|           Model | ps-eval | LlamaPartialSpoof |
-|-----------------|---------|------------------:|
-| baseline-ps-e55 |  13.67% |           46.30%  | 
+|           Model | ps-eval | LlamaPartialSpoof | Half-truth Test |
+|-----------------|---------|------------------:|----------------:|
+| baseline-ps-e55 |  13.67% |           46.30%  |          46.48% |
 
 ## Citations
 If using this source code please cite both the LlamaPartialSpoof paper which introduced this reimplementation and the original MultiResoModel paper
