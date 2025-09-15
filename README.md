@@ -47,6 +47,13 @@ This is not an exact replication of [the original MultiResoModel](https://github
 
 ```
 
+- Similarly for Half-truth data
+```
+./download_had.sh
+./inference.sh baseline 55 HAD/wav/test had-test
+./evaluate.sh baseline 55 HAD/label_HAD_test.txt had-test
+```
+
 
 ## Checkpoints
 - You can download checkpoints from [huggingface](https://huggingface.co/hieuthi/MultiResoModel-Simple-ckpts). Note that the checkpoints on huggingface are different runs from the original LlamaPartialSpoof paper hence the slightly different results.
