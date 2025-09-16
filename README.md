@@ -27,7 +27,8 @@ This is not an exact replication of [the original MultiResoModel](https://github
 ./evaluate.sh baseline 55 PartialSpoof/label_PartialSpoof_eval.txt ps-eval
 ```
 
-### Evaluating on LlamaPartialSpoof
+### Out-of-domain Evaluation
+#### LlamaPartialSpoof
 - LlamaPartialSpoof was prepared as an out-of-domain evaluation dataset. Similar to in-domain evaluation you can get the result by running the following commands
 ```
 # Download LlamaPartialSpoof
@@ -47,6 +48,7 @@ This is not an exact replication of [the original MultiResoModel](https://github
 
 ```
 
+#### Half-truth
 - Similarly for Half-truth data
 ```
 ./download_had.sh
