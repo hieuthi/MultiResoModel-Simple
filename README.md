@@ -2,6 +2,10 @@
 
 This repository is an unofficial reimplementation of the [Partial Spoof Detection MultiResoModel](https://ieeexplore.ieee.org/document/10003971) that was used in the paper [LlamaPartialSpoof](https://arxiv.org/abs/2409.14743). It was completely rewritten to include only the most essential parts and to make reproduction and improvement simple.
 
+## Related Repositories
+- https://github.com/hieuthi/CFPRF
+- https://github.com/hieuthi/partialspoof-metrics
+
 ## Notice
 This is not an exact replication of [the original MultiResoModel](https://github.com/nii-yamagishilab/PartialSpoof/tree/main/03multireso) hence the slight different result. Some of the major differences are:
 - This model was trained on fixed-length segments instead of entire utterance to easier adapted to different dataset.
